@@ -1019,6 +1019,12 @@ abstract class InputFieldView @JvmOverloads constructor(
         }
     }
 
+    protected fun setMaxDate(date: Long) {
+        if (fieldType == FieldType.CARD_EXPIRATION_DATE) {
+            (inputField as? DateInputField)?.setMaxDate(date)
+        }
+    }
+
     protected fun setMinDate(date: Long) {
         if (fieldType == FieldType.CARD_EXPIRATION_DATE) {
             (inputField as? DateInputField)?.setMinDate(date)

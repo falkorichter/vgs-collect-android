@@ -71,8 +71,12 @@ internal class DateInputField(context: Context): BaseInputField(context), View.O
         maxDate = minDate + DateUtils.YEAR_IN_MILLIS * 20
     }
 
+    private var timeGapsValidator: TimeGapsValidator? = null
+
     override fun applyFieldType() {
-        validator.addRule(TimeGapsValidator(datePattern, minDate, maxDate))
+        timeGapsValidator = TimeGapsValidator(datePattern, minDate, maxDate).also {
+            validator.addRule(it)
+        }
         inputConnection = InputCardExpDateConnection(id, validator)
 
         val stateContent = FieldContent.CreditCardExpDateContent().apply {
@@ -336,8 +340,21 @@ internal class DateInputField(context: Context): BaseInputField(context), View.O
         minDate = dateLimitationFormat.parse(date).time
     }
 
+    fun setMaxDate(date: Long) {
+        maxDate = date
+        updateTimeGapsValidator()
+    }
+
     fun setMinDate(date: Long) {
         minDate = date
+        updateTimeGapsValidator()
+    }
+
+    private fun updateTimeGapsValidator() {
+        timeGapsValidator?.let { validator.removeRule(it) }
+        timeGapsValidator = TimeGapsValidator(datePattern, minDate, maxDate).also {
+            validator.addRule(it)
+        }
     }
 
     override fun setInputType(type: Int) {

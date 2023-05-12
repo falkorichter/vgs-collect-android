@@ -116,17 +116,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mtvExpiryHint">
 
-        <com.verygoodsecurity.vgscollect.widget.ExpirationDateEditText
+        <com.verygoodsecurity.vgscollect.widget.RangeDateEditText
             android:id="@+id/vgsTiedExpiry"
             style="@style/VGSCollect.Widget.TextInputEditText.OutlineBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:datePattern="MM/yy"
-            app:datePickerModes="input"
+            app:datePattern="MM/yyyy"
+            app:datePickerModes="spinner"
             app:fieldName="card.expiry"
             app:imeOptions="actionNext"
             app:inputType="date"
-            app:text="01/30" />
+            app:text="01/2030" />
     </com.verygoodsecurity.vgscollect.widget.VGSTextInputLayout>
 
     <com.google.android.material.textview.MaterialTextView

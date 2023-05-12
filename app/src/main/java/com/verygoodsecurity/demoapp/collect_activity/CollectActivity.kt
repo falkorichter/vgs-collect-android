@@ -41,6 +41,7 @@ import com.verygoodsecurity.vgscollect.view.card.validation.payment.ChecksumAlgo
 import com.verygoodsecurity.vgscollect.view.card.validation.rules.PersonNameRule
 import com.verygoodsecurity.vgscollect.view.card.validation.rules.VGSInfoRule
 import com.verygoodsecurity.vgscollect.view.core.serializers.VGSExpDateSeparateSerializer
+import com.verygoodsecurity.vgscollect.view.date.VGSDate
 import io.github.kbiakov.codeview.adapters.Options
 import io.github.kbiakov.codeview.highlight.ColorThemeData
 import io.github.kbiakov.codeview.highlight.SyntaxColors
@@ -262,6 +263,9 @@ class CollectActivity : AppCompatActivity(), VgsCollectResponseListener,
                 Log.d(CollectActivity::class.java.simpleName, "onStateChange: ${state.fieldName}")
             }
         })
+
+        cardBinding.vgsTiedExpiry.setMinDate(VGSDate(10, 10, 2024))
+        cardBinding.vgsTiedExpiry.setMaxDate(VGSDate(10, 10, 2025))
     }
 
     // Configure cvc input field behaviour
