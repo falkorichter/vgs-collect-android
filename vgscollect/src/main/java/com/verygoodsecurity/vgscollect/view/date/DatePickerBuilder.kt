@@ -107,7 +107,7 @@ internal class DatePickerBuilder(private val context: Context, mode:DatePickerMo
             visibilityChangeListener?.onDismiss()
         }
         dialog.setOnShowListener {
-            val c = getThemeColor(context, R.attr.colorAccent)
+            val c = getThemeColor(context, androidx.appcompat.R.attr.colorAccent)
             dialog?.getButton(DatePickerDialog.BUTTON_NEGATIVE)?.apply {
                 setTextColor(c)
                 setBackgroundColor(Color.TRANSPARENT)

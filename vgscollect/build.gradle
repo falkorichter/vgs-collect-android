@@ -8,6 +8,7 @@ plugins {
 }
 
 android {
+    namespace "com.verygoodsecurity.vgscollect"
     compileSdkVersion 33
 
     defaultConfig {
@@ -22,6 +23,10 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         buildConfigField "String", "VERSION_NAME", "\"$VERSION_NAME\""
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {
